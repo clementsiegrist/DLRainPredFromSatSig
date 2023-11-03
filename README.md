@@ -1,6 +1,6 @@
 # Real-Time Rain Monitoring using Communication Satellites
 
-![Project Image](insert_link_to_context_photo_here)
+![Project Image](https://github.com/clementsiegrist/Rain-Prediction-with-LSTM/blob/main/DALL%C2%B7E%202023-11-03%2019.11.33%20-%20Photo%20of%20a%20large%20satellite%20dish%20positioned%20prominently%20in%20the%20foreground%2C%20with%20droplets%20of%20rain%20visibly%20falling%20around%20it.%20The%20sky%20is%20overcast%20with%20da.png)
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
 [![Python Version](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9-blue)](https://www.python.org/downloads/)
