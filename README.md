@@ -1,5 +1,3 @@
-# Rain-Prediction-with-LSTM
-
 # Real-Time Rain Monitoring using Communication Satellites
 
 ![Project Image](insert_link_to_context_photo_here)
@@ -9,8 +7,58 @@
 
 ## Introduction and Context
 
-In communication satellite systems, satellite operators monitor the connection to each of their satellite dishes (internet users everywhere on Earth) in real-time. This parameter is the carrier-to-noise (C/N) ratio, which can be understood as the signal-to-noise ratio and is measured in dB. In case of rain above the terminal, the signal drops, and there is a clear correlation between the amount of signal drops and the rain intensity. As the signal is almost only impacted by rain, it can be used as a virtual rain sensor. More precisely, it can be seen as a point measurement of rain at the location of the satellite dish. Combining many of these rain point measurements allows for creating rain maps for a full region with, for example, 1km x 1km spatial resolution.
+This project focuses on real-time rain monitoring using communication satellites. By analyzing the carrier-to-noise (C/N) ratio, which correlates with rain intensity, it's possible to create rain maps for regions with high spatial resolution.
 
-## Data Visualization Process using RainDataPlotter
+## Exploratory Data Analysis
 
-The `RainDataPlotter` class provides a convenient way to visualize rain data from one or multiple DataFrames. The class allows you to plot line, scatter, and histogram plots for selected variables with customizable options such as the sampling rate.
+The project utilizes the `ydata-profiling` library for automated Exploratory Data Analysis (EDA) to understand the dataset better.
+
+## Data Preprocessing and Cleaning
+
+Data preprocessing involves converting timestamps, handling missing values, normalizing data, and feature engineering. External geophysical and geographical features can also be incorporated for better predictions.
+
+## Deep Learning for Time Series Regression
+
+The project considers various machine learning algorithms, including polynomial linear regression and random forests for explainability. Deep learning models such as RNNs, LSTMs, Bi-LSTMs, Long-Long-Memory, ConvLSTM, and Transformers are explored for capturing temporal dependencies.
+
+## Subtask Splitting
+
+The project suggests splitting the task into two subtasks: classifying timestamps into rain/dry events and estimating rain intensity for rainy timestamps, with potential benefits in handling imbalances and filtering data based on classification confidence.
+
+## Handling Missing Data
+
+Missing data is handled through imputation methods like rolling mean interpolation and forward/backward fill.
+
+## Creating Features
+
+Feature engineering includes datetime features, time series derivatives, and potentially external/geophysical, geographical features to enhance model performance.
+
+## External/Geophysical, Geographical Features
+
+Consideration is given to incorporating external and geographical features to improve rain intensity predictions by accounting for factors like wind speed, temperature, atmospheric conditions, and more.
+
+## Data Ingestion and Pipeline
+
+- Data Ingestion: Tools like Apache NiFi, Cloudera miNifi, or Fluentd are used to monitor the directory where new CSV files with C/N data are pushed by satellite operators every five minutes. These tools ingest the data in real-time and forward it to the pipeline.
+
+- Data Processing: Data preprocessing involves optimizing data processing with libraries like Numba or Dask, or using distributed processing frameworks like Apache Spark or Apache FLink. It may also involve optimizing deep learning models for speed using techniques like quantization or custom hardware accelerators.
+
+- ML/DL Inference: The trained LSTM model is deployed for real-time inference, potentially using TensorFlow Serving, ONNX Runtime, or cloud compute services with optimized hardware like TPUs.
+
+- Data Storage: Processed data and model predictions are stored in databases like InfluxDB, TimescaledDB, QuestDB, or cloud-based time series databases like AWS Timestream, depending on factors like ingestion rate and query performance.
+
+- API Layer: An API layer is created using web frameworks like Flask, Django, or FastAPI to provide customers with access to rain map results.
+
+- Monitoring and Alerting: Tools like Prometheus and Grafana are used for monitoring pipeline health, and alerts are set up for detecting issues.
+
+- Orchestration: Kubernetes is used for managing components like scaling, failover, and operational concerns.
+
+- CI/CD: Continuous Integration and Continuous Deployment pipelines (e.g., Jenkins, GitLab CI/CD) are used for maintaining the codebase, automating tests, and deploying changes to the pipeline.
+
+## Multi-Terminal Algorithm
+
+A multi-terminal algorithm is proposed for rain intensity estimation using data from multiple satellite dishes. It involves data collection, preprocessing, dataset formatting, complex real-time inference, on-terminal data acquisition synchronization, and considering geographical dependencies and relations. Advantages and disadvantages of multi-terminal algorithms are discussed.
+
+## Code Snippets
+
+Code snippets are provided for simulating data from multiple terminals, normalizing data, and building a multi-terminal LSTM model for rain intensity prediction.
